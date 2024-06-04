@@ -5,10 +5,13 @@ pipeline {
         }
     }
 
+    environment {
+    PATH = "/usr/share/maven/bin:$PATH"
+}
     stages {
-        stage('Clone code') {
+        stage('build'){
             steps {
-                git branch: 'main', url: 'https://github.com/varma-raviteja/Devops-project.git'
+                sh 'mvn clean deploy'
             }
         }
     }
